@@ -7,7 +7,9 @@ list( APPEND tools_tests_scripts
              test_plotdiacov_help.sh
              test_varbcdiagnose_help.sh
              test_plotvarbcpred_help.sh
+	     test_tuneBR_help.sh
      )
+
 
 
 foreach( _script ${tools_tests_scripts} )
