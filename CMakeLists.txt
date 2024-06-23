@@ -53,7 +53,6 @@ set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${dialect}")
 # COMPILE THE FORTRAN ROUTINE (read stabal file for tuneBR ) 
 add_subdirectory ( src )
 
-#cmake_language(EXIT )
 add_executable(jbdiagnose.x src/jbdiagnose.F90)
 add_executable(cv_header_list.x src/cv_header_list.F90)
 add_executable(dfscomp.x src/dfscomp.F90)
