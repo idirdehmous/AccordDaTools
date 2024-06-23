@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.18   )
 
-#project(readgsa  LANGUAGES C Fortran  )
 set ( SUB_PROJECT  readgsa  )
-
 
 # Safety net
 if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
@@ -81,9 +79,7 @@ add_dependencies          (${SUB_PROJECT} genpyf)
 target_include_directories(${SUB_PROJECT} PRIVATE "${F2PY_INCLUDE_DIR}")
 
 set_target_properties(  readgsa   PROPERTIES PREFIX ""  SUFFIX ".so" )
-install (FILES  ${CMAKE_CURRENT_BINARY_DIR}/readgsa.so PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ  DESTINATION modules )
-
-
-#install( CODE "file(COPY $<TARGET_FILE:${SUB_PROJECT}>/ DESTINATION ${CMAKE_SOURCE_DIR}/modules/readgsa.so)" )
-#message( "-----------SUCCESSFULLY ADDED readgsa.so  TO  tuneBR/modules ----------" )
-
+install (FILES  ${CMAKE_CURRENT_BINARY_DIR}/readgsa.so PERMISSIONS 
+	                                   OWNER_EXECUTE OWNER_WRITE 
+					   OWNER_READ GROUP_EXECUTE 
+					   GROUP_READ  DESTINATION modules )
