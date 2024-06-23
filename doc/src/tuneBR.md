@@ -72,5 +72,6 @@ ODB CONTENT              :  SYNOP , AMDAR , TEMP & GPSSOL
 CYCLE INCREMENT          :  3 hours 
 N SLURM CPU              :  1
 
+
 RUNTIME DURATION         :  00:02:45
 ------------------------------------------------------------
