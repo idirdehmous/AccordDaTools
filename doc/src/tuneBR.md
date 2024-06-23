@@ -11,6 +11,7 @@ proposed by Desroziers et al (2005), see below:
 https://rmets.onlinelibrary.wiley.com/doi/pdf/10.1256/qj.05.108
 """
 
+
 GENERAL INFO :
 MODULE NAME         : tuneBR 
 USED LANGUAGE       : fortran/python 
@@ -26,13 +27,13 @@ I-)  IF IT'S  BUILD  USING CMAKE, ONE HAS ONLY TO MERGE THE BOTH
      CMAKE FILES WITH THE ONE OF AccordDaTools !
      SEE THE FUTURE CORRCETIONS BY E.Weahlan in AccordDaTools REPOSITORY.  
 
-II-) IF IT IS USED AS STANDOLONE ( NOT IN AccordDaTools )
+II-) IF IT IS USED AS STANDOLONE TOOL 
 
 ( ON ATOS , BELENOS AND RMI LOCAL HPC "PBS ENV"  )  
-module load python3/3.8.8-01  
+module load python3/3.10.10-01 
 module load cmake   
 
-STEP1 : INSTALL TE FORTRAN/Python EXTENSION TO READ THE GSA FILE (Bmatrix COVARIANCES )
+STEP1 : INSTALL THE FORTRAN/Python EXTENSION TO READ THE GSA FILE (Bmatrix COVARIANCES )
 ```
         mkdir -p tuneBR/build 
         cd tuneBR/build          
@@ -49,9 +50,11 @@ STEP1 : INSTALL TE FORTRAN/Python EXTENSION TO READ THE GSA FILE (Bmatrix COVARI
 ```
 SETP2  : PREPARE SOME ODB FILES ( CCMA FROM MINIMISATION )
         (IN THE DOCUMENTATION, A PERIOD OF 10 DAYS SHOULD BE ENOUGH )
+
 STEP3  : GENERATE A MANDALAY BINARY WITH THE FOLLOWING sql REQUEST 
         "CREATE VIEW mandalay AS
          SELECT  obstype,varno,an_depar,fg_depar,final_obs_error FROM hdr, body, errstat"       
+
  STEP3 : CONFIGURE THE "config.ini"  FILE ACCORDING TO YOUR PATHS AND ENVIRONMENT  
  STEP4 : RUN 
 ```       
@@ -61,3 +64,13 @@ STEP3  : GENERATE A MANDALAY BINARY WITH THE FOLLOWING sql REQUEST
 THE SIGMA_B ,SIGMA_O RATIOS ,AVERAGE RATIOS AND 
 THE NUMBER OF USED OBSERVATIONS WILL BE PRINTED ON THE SCREEN
 
+-------------------RUNTIME PERFORMANCE ---------------------
+PLATFORM                 :  ECMWF (ATOS )
+N DAYS PERIOD            :  10 
+N PARALELL PROCESSES     :  6 
+ODB CONTENT              :  SYNOP , AMDAR , TEMP & GPSSOL 
+CYCLE INCREMENT          :  3 hours 
+N SLURM CPU              :  1
+
+RUNTIME DURATION         :  00:02:45
+------------------------------------------------------------
