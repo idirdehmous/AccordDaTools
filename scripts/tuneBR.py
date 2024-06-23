@@ -14,8 +14,11 @@ https://rmets.onlinelibrary.wiley.com/doi/pdf/10.1256/qj.05.108
 import os
 import sys  
 cwd=os.getenv("PWD")
-#sys.path.append(cwd+"/../modules")
-sys.path.insert(0, '/hpcperm/cvah/AccordDaTools/modules')
+modules_path="__CMAKE_PREFIX__"
+
+sys.path.insert(0, cwd+'/modules')
+sys.path.insert(1, modules_path  )
+
 import configparser
 from   datetime            import  datetime ,timedelta 
 from   statistics          import  mean 
@@ -23,7 +26,7 @@ from   sigma_bo    import  Predef, Diag , Ratios
 from   setting_env import  TuneEnv 
 from   odb         import  Odb
 import gsacov 
-quit()
+
 
 StartTime = datetime.now()
 
@@ -47,7 +50,7 @@ config=configparser.ConfigParser()
 # ALL ITEMS IN UPPER CASE 
 config.optionxform = str
 config.read(ini_file)
-
+quit()
 # INIT ENV 
 env = TuneEnv ( config  )
 PathDict, ModelDict  = env.__Dicts__()
