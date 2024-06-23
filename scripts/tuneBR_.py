@@ -18,7 +18,7 @@ cwd=os.getenv("PWD")
 # CMAKE INSTALL PATH GIVEN BY THE USER !
 # WILL REPLACED  BY cmake 
 
-modules_path="/hpcperm/cvah/actools"
+modules_path="__CMAKE_PREFIX__"
 sys.path.insert(0, cwd+'/modules')
 sys.path.insert(1, modules_path  )
 

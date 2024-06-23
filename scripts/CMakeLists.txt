@@ -15,5 +15,14 @@ install_scripts (cv_header_list.sh    )
 install_scripts (varbcdiagnose.sh plotvarbccoeff.py)
 install_scripts (rundiacov.sh     diag_diacov.sh plotdiacov.py)
 install_scripts (dfscomp.sh       plotdfs.py)
-install_scripts (tuneBR.py        tuneBR.py  )
+
+# A SMALL TRICK TO AVOID USING setup.py or wheel FILE TO USE THE PYTHON MODULES
+# FROM "everywhere" 
+file    (READ    "tuneBR_.py" FILE_CONTENT)  # THIS FILE WILL BE RENAMED AS tuneBR.py 
+string  (REPLACE "__CMAKE_PREFIX__"  "${CMAKE_INSTALL_PREFIX}" FILE_CONTENT "${FILE_CONTENT}" )
+file    (WRITE "${CMAKE_SOURCE_DIR}/scripts/tuneBR.py" "${FILE_CONTENT}")
+
+install_scripts ( tuneBR.py   tuneBR.py )
+
+#install (FILES "${CMAKE_SOURCE_DIR}/scripts/tuneBR.py"  DESTINATION bin )
 #install_scripts (diacov.sh festat.sh)
